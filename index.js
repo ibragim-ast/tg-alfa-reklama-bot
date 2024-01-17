@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const TelegramApi = require("node-telegram-bot-api");
 const {
   isaevaMall,
