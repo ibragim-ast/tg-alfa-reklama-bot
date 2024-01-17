@@ -30,7 +30,6 @@ const sendScreenInfo = async (chatId, screen) => {
   if (screen.image) {
     await bot.sendPhoto(chatId, screen.image);
   }
-
   bot.sendMessage(chatId, screen.text, {
     reply_markup: JSON.stringify({
       inline_keyboard: [
@@ -51,103 +50,103 @@ const screenOptions = {
       [
         {
           text: "Grozny Mall, ул. Х.Исаева",
-          callback_data: "1",
+          callback_data: 1,
         },
       ],
       [
         {
           text: "Grozny Mall, пр-т. В.В.Путина",
-          callback_data: "2",
+          callback_data: 2,
         },
       ],
       [
         {
           text: "Grozny Mall, пр-т. А.А. Кадырова",
-          callback_data: "3",
+          callback_data: 3,
         },
       ],
       [
         {
           text: "Спираль, пл. Минутка",
-          callback_data: "4",
+          callback_data: 4,
         },
       ],
       [
         {
           text: "Грозный Сити, пр-т. А.А. Кадырова",
-          callback_data: "5",
+          callback_data: 5,
         },
       ],
       [
         {
           text: "Туннель, пр-т. А.А. Кадырова",
-          callback_data: "6",
+          callback_data: 6,
         },
       ],
       [
         {
           text: "Алтайский круг",
-          callback_data: "8",
+          callback_data: 8,
         },
       ],
       [
         {
           text: "Столица",
-          callback_data: "9",
+          callback_data: 9,
         },
       ],
       [
         {
           text: "Старопромысловское шоссе",
-          callback_data: "10",
+          callback_data: 10,
         },
       ],
       [
         {
           text: "пр-т. М. Эсамбаева",
-          callback_data: "11",
+          callback_data: 11,
         },
       ],
       [
         {
           text: "пр-т. В.В. Путина, ЦУМ",
-          callback_data: "12",
+          callback_data: 12,
         },
       ],
       [
         {
           text: "Высотный комплекс 'Грозный Сити'",
-          callback_data: "13",
+          callback_data: 13,
         },
       ],
       [
         {
           text: "ул. Назарбаева, ТЦ 'Гранд Деловой'",
-          callback_data: "14",
+          callback_data: 14,
         },
       ],
       [
         {
           text: "пр-т. К-Х. Кишиева",
-          callback_data: "15",
+          callback_data: 15,
         },
       ],
       [
         {
           text: "Садовое кольцо, 'Башня'",
-          callback_data: "16",
+          callback_data: 16,
         },
       ],
       [
         {
           text: "Садовое кольцо, 'Кольцо вокруг Башни'",
-          callback_data: "17",
+          callback_data: 17,
         },
       ],
       [
         {
           text: "г. Аргун",
-          callback_data: "18",
+          callback_data: 18,
         },
       ],
     ],
@@ -216,11 +215,11 @@ const start = () => {
   bot.on("callback_query", async (msg) => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
-    const managerId = "5159544996";
+    const managerId = "5570889262";
     const username = msg.message.chat.username;
 
     if (data == 1) {
-      sendScreenInfo(chatId, isaevaMall, "GrozMallIsaeva");
+      sendScreenInfo(chatId, isaevaMall);
     }
     if (data == 2) {
       sendScreenInfo(chatId, kadyrovaMall);
