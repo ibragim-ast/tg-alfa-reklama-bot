@@ -20,10 +20,30 @@ const {
   towerRing,
   argun,
 } = require("./screensInfo");
+const { match } = require("assert");
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 
 const bot = new TelegramApi(token, { polling: true });
+
+const sendScreenInfo = async (chatId, screen) => {
+  if (screen.image) {
+    await bot.sendPhoto(chatId, screen.image);
+  }
+
+  bot.sendMessage(chatId, screen.text, {
+    reply_markup: JSON.stringify({
+      inline_keyboard: [
+        [
+          {
+            text: "Оставить заявку",
+            callback_data: `contact_manager_${screen.name}`,
+          },
+        ],
+      ],
+    }),
+  });
+};
 
 const screenOptions = {
   reply_markup: JSON.stringify({
@@ -134,19 +154,6 @@ const screenOptions = {
   }),
 };
 
-const callOptions = {
-  reply_markup: JSON.stringify({
-    inline_keyboard: [
-      [
-        {
-          text: "Связаться с менеджером",
-          callback_data: "1",
-        },
-      ],
-    ],
-  }),
-};
-
 const start = () => {
   bot.setMyCommands([
     { command: "/start", description: "Старт" },
@@ -210,77 +217,66 @@ const start = () => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
     const managerId = "5159544996";
+    const username = msg.message.chat.username;
 
     if (data == 1) {
-      await bot.sendPhoto(chatId, isaevaMall.image);
-      bot.sendMessage(chatId, isaevaMall.text);
+      sendScreenInfo(chatId, isaevaMall, "GrozMallIsaeva");
     }
     if (data == 2) {
-      await bot.sendPhoto(chatId, kadyrovaMall.image);
-      bot.sendMessage(chatId, putinaMall.text);
+      sendScreenInfo(chatId, kadyrovaMall);
     }
     if (data == 3) {
-      await bot.sendPhoto(chatId, putinaMall.image);
-      bot.sendMessage(chatId, kadyrovaMall.text);
+      sendScreenInfo(chatId, putinaMall);
     }
     if (data == 4) {
-      await bot.sendPhoto(chatId, spiral.image);
-      bot.sendMessage(chatId, spiral.text, callOptions).then(() => {
-        bot.sendMessage(
-          managerId,
-          `Пользователь ${chatId} хочет связаться с вами`
-        );
-      });
+      sendScreenInfo(chatId, spiral);
     }
     if (data == 5) {
-      await bot.sendPhoto(chatId, kadyrovaGroznyCity.image);
-      bot.sendMessage(chatId, kadyrovaGroznyCity.text);
+      sendScreenInfo(chatId, kadyrovaGroznyCity);
     }
     if (data == 6) {
-      await bot.sendPhoto(chatId, kadyrovaTunnelA.image);
-      bot.sendMessage(chatId, kadyrovaTunnelA.text);
+      sendScreenInfo(chatId, kadyrovaTunnelA);
     }
     if (data == 8) {
-      await bot.sendPhoto(chatId, altayskiyKrug.image);
-      bot.sendMessage(chatId, altayskiyKrug.text);
+      sendScreenInfo(chatId, altayskiyKrug);
     }
     if (data == 9) {
-      bot.sendMessage(chatId, nazarbaevaStolitca.text);
+      sendScreenInfo(chatId, nazarbaevaStolitca);
     }
     if (data == 10) {
-      bot.sendMessage(chatId, staropromParadise.text);
+      sendScreenInfo(chatId, staropromParadise);
     }
     if (data == 11) {
-      await bot.sendPhoto(chatId, esambaevaPilon.image);
-      bot.sendMessage(chatId, esambaevaPilon.text);
+      sendScreenInfo(chatId, esambaevaPilon);
     }
     if (data == 12) {
-      //   await bot.sendPhoto(chatId, esambaevaPilon.image);
-      bot.sendMessage(chatId, putinaTsum.text);
+      sendScreenInfo(chatId, putinaTsum);
     }
     if (data == 13) {
-      await bot.sendPhoto(chatId, groznyCity.image);
-      bot.sendMessage(chatId, groznyCity.text);
+      sendScreenInfo(chatId, groznyCity);
     }
     if (data == 14) {
-      //await bot.sendPhoto(chatId, nazarbaevaDelovoy.image);
-      bot.sendMessage(chatId, nazarbaevaDelovoy.text);
+      sendScreenInfo(chatId, nazarbaevaDelovoy);
     }
     if (data == 15) {
-      //await bot.sendPhoto(chatId, nazarbaevaDelovoy.image);
-      bot.sendMessage(chatId, kishieva.text);
+      sendScreenInfo(chatId, kishieva);
     }
     if (data == 16) {
-      await bot.sendPhoto(chatId, tower.image);
-      bot.sendMessage(chatId, tower.text);
+      sendScreenInfo(chatId, tower);
     }
     if (data == 17) {
-      await bot.sendPhoto(chatId, towerRing.image);
-      bot.sendMessage(chatId, towerRing.text);
+      sendScreenInfo(chatId, towerRing);
     }
     if (data == 18) {
-      //await bot.sendPhoto(chatId, towerRing.image);
-      bot.sendMessage(chatId, argun.text);
+      sendScreenInfo(chatId, argun);
+    }
+    if (data.startsWith("contact_manager")) {
+      const page = data.split("_")[2];
+
+      bot.sendMessage(
+        managerId,
+        `Пользователь @${username} (id:${chatId}) хочет связаться с вами по поводу экрана: ${page}`
+      );
     }
   });
 };
