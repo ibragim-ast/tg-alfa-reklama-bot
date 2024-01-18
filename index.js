@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 const TelegramApi = require("node-telegram-bot-api");
 const {
   isaevaMall,
@@ -20,7 +19,7 @@ const {
   towerRing,
   argun,
 } = require("./screensInfo");
-const { match } = require("assert");
+const { screenOptions } = require("./options");
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
 
@@ -39,118 +38,15 @@ const sendScreenInfo = async (chatId, screen) => {
             callback_data: `contact_manager_${screen.name}`,
           },
         ],
+        [
+          {
+            text: "Вернуться к списку экранов",
+            callback_data: 0,
+          },
+        ],
       ],
     }),
   });
-};
-
-const screenOptions = {
-  reply_markup: JSON.stringify({
-    inline_keyboard: [
-      [
-        {
-          text: "Grozny Mall, ул. Х.Исаева",
-          callback_data: 1,
-        },
-      ],
-      [
-        {
-          text: "Grozny Mall, пр-т. В.В.Путина",
-          callback_data: 2,
-        },
-      ],
-      [
-        {
-          text: "Grozny Mall, пр-т. А.А. Кадырова",
-          callback_data: 3,
-        },
-      ],
-      [
-        {
-          text: "Спираль, пл. Минутка",
-          callback_data: 4,
-        },
-      ],
-      [
-        {
-          text: "Грозный Сити, пр-т. А.А. Кадырова",
-          callback_data: 5,
-        },
-      ],
-      [
-        {
-          text: "Туннель, пр-т. А.А. Кадырова",
-          callback_data: 6,
-        },
-      ],
-      [
-        {
-          text: "Алтайский круг",
-          callback_data: 8,
-        },
-      ],
-      [
-        {
-          text: "Столица",
-          callback_data: 9,
-        },
-      ],
-      [
-        {
-          text: "Старопромысловское шоссе",
-          callback_data: 10,
-        },
-      ],
-      [
-        {
-          text: "пр-т. М. Эсамбаева",
-          callback_data: 11,
-        },
-      ],
-      [
-        {
-          text: "пр-т. В.В. Путина, ЦУМ",
-          callback_data: 12,
-        },
-      ],
-      [
-        {
-          text: "Высотный комплекс 'Грозный Сити'",
-          callback_data: 13,
-        },
-      ],
-      [
-        {
-          text: "ул. Назарбаева, ТЦ 'Гранд Деловой'",
-          callback_data: 14,
-        },
-      ],
-      [
-        {
-          text: "пр-т. К-Х. Кишиева",
-          callback_data: 15,
-        },
-      ],
-      [
-        {
-          text: "Садовое кольцо, 'Башня'",
-          callback_data: 16,
-        },
-      ],
-      [
-        {
-          text: "Садовое кольцо, 'Кольцо вокруг Башни'",
-          callback_data: 17,
-        },
-      ],
-      [
-        {
-          text: "г. Аргун",
-          callback_data: 18,
-        },
-      ],
-    ],
-  }),
 };
 
 const start = () => {
@@ -219,43 +115,43 @@ const start = () => {
     const username = msg.message.chat.username;
 
     if (data == 1) {
-      sendScreenInfo(chatId, isaevaMall);
+      sendScreenInfo(chatId, spiral);
     }
     if (data == 2) {
       sendScreenInfo(chatId, kadyrovaMall);
     }
     if (data == 3) {
-      sendScreenInfo(chatId, putinaMall);
-    }
-    if (data == 4) {
-      sendScreenInfo(chatId, spiral);
-    }
-    if (data == 5) {
-      sendScreenInfo(chatId, kadyrovaGroznyCity);
-    }
-    if (data == 6) {
       sendScreenInfo(chatId, kadyrovaTunnelA);
     }
+    if (data == 4) {
+      sendScreenInfo(chatId, kadyrovaGroznyCity);
+    }
+    if (data == 5) {
+      sendScreenInfo(chatId, putinaMall);
+    }
+    if (data == 6) {
+      sendScreenInfo(chatId, putinaTsum);
+    }
+    if (data == 7) {
+      sendScreenInfo(chatId, isaevaMall);
+    }
     if (data == 8) {
-      sendScreenInfo(chatId, altayskiyKrug);
-    }
-    if (data == 9) {
-      sendScreenInfo(chatId, nazarbaevaStolitca);
-    }
-    if (data == 10) {
-      sendScreenInfo(chatId, staropromParadise);
-    }
-    if (data == 11) {
       sendScreenInfo(chatId, esambaevaPilon);
     }
+    if (data == 9) {
+      sendScreenInfo(chatId, altayskiyKrug);
+    }
+    if (data == 10) {
+      sendScreenInfo(chatId, nazarbaevaStolitca);
+    }
+    if (data == 11) {
+      sendScreenInfo(chatId, nazarbaevaDelovoy);
+    }
     if (data == 12) {
-      sendScreenInfo(chatId, putinaTsum);
+      sendScreenInfo(chatId, staropromParadise);
     }
     if (data == 13) {
       sendScreenInfo(chatId, groznyCity);
-    }
-    if (data == 14) {
-      sendScreenInfo(chatId, nazarbaevaDelovoy);
     }
     if (data == 15) {
       sendScreenInfo(chatId, kishieva);
@@ -268,6 +164,9 @@ const start = () => {
     }
     if (data == 18) {
       sendScreenInfo(chatId, argun);
+    }
+    if (data == 0) {
+      bot.sendMessage(chatId, "Список экранов", screenOptions);
     }
     if (data.startsWith("contact_manager")) {
       const page = data.split("_")[2];
