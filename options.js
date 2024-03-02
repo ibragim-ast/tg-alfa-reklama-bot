@@ -70,7 +70,7 @@ module.exports = {
         ],
         [
           {
-            text: 'ул. В. Алиева, 18А, "Paradise"',
+            text: "ул. В. Алиева, 18А, Парадиз'",
             callback_data: 12,
           },
         ],

@@ -153,6 +153,7 @@ const start = () => {
       sendScreenInfo(chatId, staropromParadise);
     }
     if (data == 13) {
+      console.log(data);
       sendScreenInfo(chatId, groznyCity);
     }
     if (data == 15) {
