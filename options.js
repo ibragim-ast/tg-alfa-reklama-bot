@@ -104,11 +104,16 @@ module.exports = {
             callback_data: 18,
           },
         ],
-
         [
           {
             text: "г. Аргун",
             callback_data: 19,
+          },
+        ],
+        [
+          {
+            text: "ул. Лорсанова, ТРЦ Беркат",
+            callback_data: 20,
           },
         ],
       ],

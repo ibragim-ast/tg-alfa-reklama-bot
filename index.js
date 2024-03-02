@@ -19,6 +19,7 @@ const {
   towerRing,
   argun,
   chernorech,
+  berkatPilon,
 } = require("./screensInfo");
 const { screenOptions } = require("./options");
 
@@ -168,6 +169,9 @@ const start = () => {
     }
     if (data == 19) {
       sendScreenInfo(chatId, argun);
+    }
+    if (data == 20) {
+      sendScreenInfo(chatId, berkatPilon);
     }
     if (data == 0) {
       bot.sendMessage(chatId, "Список экранов", screenOptions);
