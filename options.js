@@ -116,6 +116,12 @@ module.exports = {
             callback_data: 20,
           },
         ],
+        [
+          {
+            text: "ул. Лорсанова, ЦРД",
+            callback_data: 21,
+          },
+        ],
       ],
     }),
   },

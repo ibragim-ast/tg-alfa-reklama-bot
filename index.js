@@ -20,6 +20,7 @@ const {
   argun,
   chernorech,
   berkatPilon,
+  lorsanovaCRD,
 } = require("./screensInfo");
 const { screenOptions } = require("./options");
 
@@ -173,6 +174,9 @@ const start = () => {
     }
     if (data == 20) {
       sendScreenInfo(chatId, berkatPilon);
+    }
+    if (data == 21) {
+      sendScreenInfo(chatId, lorsanovaCRD);
     }
     if (data == 0) {
       bot.sendMessage(chatId, "Список экранов", screenOptions);
