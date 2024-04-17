@@ -122,6 +122,12 @@ module.exports = {
             callback_data: 21,
           },
         ],
+        [
+          {
+            text: "пр-т. Исаева, 100, ГГНТУ",
+            callback_data: 22,
+          },
+        ],
       ],
     }),
   },
