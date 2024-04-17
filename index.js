@@ -34,7 +34,7 @@ const sendScreenInfo = async (chatId, screen) => {
     await bot.sendPhoto(chatId, screen.image);
   }
   if (screen.latitude && screen.longitude) {
-    bot.sendLocation(chatId, screen.latitude, screen.longitude);
+    await bot.sendLocation(chatId, screen.latitude, screen.longitude);
   }
 
   bot.sendMessage(chatId, screen.text, {
