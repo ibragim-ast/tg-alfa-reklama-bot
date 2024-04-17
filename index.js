@@ -33,6 +33,10 @@ const sendScreenInfo = async (chatId, screen) => {
   if (screen.image) {
     await bot.sendPhoto(chatId, screen.image);
   }
+  if (screen.latitude && screen.longitude) {
+    bot.sendLocation(chatId, screen.latitude, screen.longitude);
+  }
+
   bot.sendMessage(chatId, screen.text, {
     reply_markup: JSON.stringify({
       inline_keyboard: [
@@ -68,7 +72,9 @@ const start = () => {
     const chatId = msg.chat.id;
 
     if (text === "/start") {
+      const adminId = "28506635";
       await bot.sendPhoto(chatId, "https://ibb.co/t3qQJyH");
+      await bot.sendMessage(adminId, "кто-то этим пользуется");
       return bot.sendMessage(
         chatId,
         `Этот бот предоставляет справочную информацию об услугах агентства по размещению рекламы на экранах в г. Грозном и г. Аргуне. \n\nДоступные команды:\n/info - общая информация об агентстве\n/screens - подробности о наших экранах\n/promotions - акции\n/contacts - способы связаться с нами`
