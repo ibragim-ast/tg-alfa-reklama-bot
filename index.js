@@ -31,7 +31,16 @@ const managerId = process.env.MANAGER_ID;
 
 const bot = new TelegramApi(token, { polling: true });
 
-const sendScreenInfo = async (chatId, screen) => {
+const deleteScreenOptionsMessage = async (chatId, messageId) => {
+  try {
+    await bot.deleteMessage(chatId, messageId);
+  } catch (error) {
+    console.error("Ошибка при удалении сообщения:", error.message);
+  }
+};
+
+const sendScreenInfo = async (chatId, screen, messageId) => {
+  await deleteScreenOptionsMessage(chatId, messageId);
   if (screen.image) {
     await bot.sendPhoto(chatId, screen.image);
   }
@@ -143,82 +152,83 @@ const start = () => {
   bot.on("callback_query", async (msg) => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
+    const messageId = msg.message.message_id;
 
     const username = msg.message.chat.username;
 
     if (data == 1) {
-      sendScreenInfo(chatId, spiral);
+      sendScreenInfo(chatId, spiral, messageId);
     }
     if (data == 2) {
-      sendScreenInfo(chatId, kadyrovaMall);
+      sendScreenInfo(chatId, kadyrovaMall, messageId);
     }
     if (data == 3) {
-      sendScreenInfo(chatId, kadyrovaTunnelA);
+      sendScreenInfo(chatId, kadyrovaTunnelA, messageId);
     }
     if (data == 4) {
-      sendScreenInfo(chatId, kadyrovaGroznyCity);
+      sendScreenInfo(chatId, kadyrovaGroznyCity, messageId);
     }
     if (data == 5) {
-      sendScreenInfo(chatId, putinaMall);
+      sendScreenInfo(chatId, putinaMall, messageId);
     }
     if (data == 6) {
-      sendScreenInfo(chatId, putinaTsum);
+      sendScreenInfo(chatId, putinaTsum, messageId);
     }
     if (data == 7) {
-      sendScreenInfo(chatId, isaevaMall);
+      sendScreenInfo(chatId, isaevaMall, messageId);
     }
     if (data == 8) {
-      sendScreenInfo(chatId, esambaevaPilon);
+      sendScreenInfo(chatId, esambaevaPilon, messageId);
     }
     if (data == 9) {
-      sendScreenInfo(chatId, altayskiyKrug);
+      sendScreenInfo(chatId, altayskiyKrug, messageId);
     }
     if (data == 10) {
-      sendScreenInfo(chatId, nazarbaevaStolitca);
+      sendScreenInfo(chatId, nazarbaevaStolitca, messageId);
     }
     if (data == 11) {
-      sendScreenInfo(chatId, nazarbaevaDelovoy);
+      sendScreenInfo(chatId, nazarbaevaDelovoy, messageId);
     }
     if (data == 12) {
-      sendScreenInfo(chatId, staropromParadise);
+      sendScreenInfo(chatId, staropromParadise, messageId);
     }
     if (data == 13) {
-      console.log(data);
-      sendScreenInfo(chatId, groznyCity);
+      sendScreenInfo(chatId, groznyCity, messageId);
     }
     if (data == 15) {
-      sendScreenInfo(chatId, kishieva);
+      sendScreenInfo(chatId, kishieva, messageId);
     }
     if (data == 16) {
-      sendScreenInfo(chatId, tower);
+      sendScreenInfo(chatId, tower, messageId);
     }
     if (data == 17) {
-      sendScreenInfo(chatId, towerRing);
+      sendScreenInfo(chatId, towerRing, messageId);
     }
     if (data == 18) {
-      sendScreenInfo(chatId, chernorech);
+      sendScreenInfo(chatId, chernorech, messageId);
     }
     if (data == 19) {
-      sendScreenInfo(chatId, argun);
+      sendScreenInfo(chatId, argun, messageId);
     }
     if (data == 20) {
-      sendScreenInfo(chatId, berkatPilon);
+      sendScreenInfo(chatId, berkatPilon, messageId);
     }
     if (data == 21) {
-      sendScreenInfo(chatId, lorsanovaCRD);
+      sendScreenInfo(chatId, lorsanovaCRD, messageId);
     }
     if (data == 22) {
-      sendScreenInfo(chatId, ggntu);
+      sendScreenInfo(chatId, ggntu, messageId);
     }
     if (data == 0) {
       bot.sendMessage(chatId, "Список экранов", screenOptions);
     }
     if (data.startsWith("contact_manager")) {
       const page = data.split("_")[2];
+      const clientLink = `tg://user?id=${chatId}`;
 
       bot.sendMessage(
         managerId,
-        `Пользователь @${username} (id:${chatId}) хочет связаться с вами по поводу экрана: ${page}`
+        `Пользователь хочет связаться с вами по поводу экрана: ${page}\nСсылка на чат: ${clientLink}`
       );
     }
   });
