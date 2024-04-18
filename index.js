@@ -26,6 +26,8 @@ const {
 const { screenOptions } = require("./options");
 
 const token = process.env.TELEGRAM_BOT_TOKEN;
+const adminId = process.env.ADMIN_ID;
+const managerId = process.env.MANAGER_ID;
 
 const bot = new TelegramApi(token, { polling: true });
 
@@ -72,7 +74,6 @@ const start = () => {
     const chatId = msg.chat.id;
 
     if (text === "/start") {
-      const adminId = process.env.ADMIN_ID;
       await bot.sendPhoto(chatId, "https://ibb.co/t3qQJyH");
       await bot.sendMessage(adminId, "кто-то этим пользуется");
       return bot.sendMessage(
@@ -142,7 +143,7 @@ const start = () => {
   bot.on("callback_query", async (msg) => {
     const data = msg.data;
     const chatId = msg.message.chat.id;
-    const managerId = process.env.MANAGER_ID;
+
     const username = msg.message.chat.username;
 
     if (data == 1) {

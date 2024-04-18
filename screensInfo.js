@@ -12,7 +12,7 @@ const FRAME_RATES = {
 module.exports = {
   isaevaMall: {
     name: "ГрозныйМоллИсаева",
-    image: "https://ibb.co/6ZNFZYb",
+    image: "https://ibb.co/wwPQjjS",
     latitude: 43.317262,
     longitude: 45.692336,
     text: `Один из трех экранов, установленных на пересечении проспектов В.В.Путина и Х.Исаева. Со стороны проспекта Х. Исаева. 
@@ -32,7 +32,7 @@ module.exports = {
   },
   kadyrovaMall: {
     name: "ГрозныйМоллКадырова",
-    image: "https://ibb.co/0Gztgfr",
+    image: "https://ibb.co/wwPQjjS",
     latitude: 43.317262,
     longitude: 45.692336,
     text: `Один из трех экранов, установленных на пересечении проспектов В.В.Путина и Х.Исаева. Со стороны проспекта А.А. Кадырова. 
@@ -52,7 +52,7 @@ module.exports = {
   },
   putinaMall: {
     name: "ГрозныйМоллПутина",
-    image: "https://ibb.co/tCD4M75",
+    image: "https://ibb.co/wwPQjjS",
     latitude: 43.317262,
     longitude: 45.692336,
     text: `Один из трех экранов, установленных на пересечении проспектов В.В.Путина и Х.Исаева. Со стороны проспекта В.В. Путина. 
@@ -72,7 +72,7 @@ module.exports = {
   },
   spiral: {
     name: "Спираль",
-    image: "https://ibb.co/58mTgTj",
+    image: "https://ibb.co/0CQv5f3",
     latitude: 43.299444,
     longitude: 45.710528,
     text: `Экран в виде спирали в центре кольцевой развязки на площади Минутка 
@@ -91,7 +91,7 @@ module.exports = {
   },
   kadyrovaGroznyCity: {
     name: "Пилон_Кадырова",
-    image: "https://ibb.co/8b7n40s",
+    image: "https://ibb.co/K24H73r",
     latitude: 43.315164,
     longitude: 45.696402,
     text: `Экран в виде пилона раположен на въезде в высотный комплекс "Грозный Сити" 
@@ -110,7 +110,7 @@ module.exports = {
   },
   kadyrovaTunnelA: {
     name: "Туннель",
-    image: "https://ibb.co/WzxWd0y",
+    image: "https://ibb.co/hdCgvR9",
     latitude: 43.303133,
     longitude: 45.707191,
     text: `Два экрана размещены на въездах в туннель на проспекте А.А. Кадырова. 
@@ -127,7 +127,7 @@ module.exports = {
   },
   altayskiyKrug: {
     name: "Круг ГИБДД",
-    image: "https://ibb.co/4TS8BMp",
+    image: "https://ibb.co/QY1W8sv",
     latitude: 43.343493,
     longitude: 45.672794,
     text: `Три экрана размещенных в центре кольцевой развязки на пересечении Алтайской, Балтийской улиц и улицы У.А. Арсанукаева 
@@ -224,7 +224,7 @@ module.exports = {
   },
   groznyCity: {
     name: "Пилоны в Грозный Сити",
-    image: "https://ibb.co/J2pkPhF",
+    image: "https://ibb.co/0qb0GB1",
     latitude: 43.315651,
     longitude: 45.697655,
     text: `2 экрана в виде пилонов расположены на территории высотного комплекса "Грозный Сити"
@@ -261,7 +261,7 @@ module.exports = {
   },
   nazarbaevaDelovoy: {
     name: "Деловая",
-    image: "https://ibb.co/R2qCgVC",
+    image: "https://ibb.co/7bVvTBd",
     latitude: 43.333003,
     longitude: 45.686884,
     text: `Экран расположен по адресу: ул. Назарбаева, 106, рядом с ТЦ "Гранд Деловой" 
@@ -280,7 +280,7 @@ module.exports = {
   },
   kishieva: {
     name: "Ханкальская",
-    image: "https://ibb.co/Htgs3Hh",
+    image: "https://ibb.co/pPb90DG",
     latitude: 43.295548,
     longitude: 45.722667,
     text: `Экран расположен по адресу: пр-т. К-Х. Кишиева, 18 
@@ -299,7 +299,7 @@ module.exports = {
   },
   tower: {
     name: "Башня",
-    image: "https://ibb.co/p4SXRLW",
+    image: "https://ibb.co/H2sv9hD",
     latitude: 43.319133,
     longitude: 45.714269,
     text: `4 экрана расположены в центре кольцевой развязки "Садовое кольцо" на стилизованной под вайнахскую башню конструкции. Каждый экран сдается отдельно. 
@@ -318,7 +318,7 @@ module.exports = {
   },
   towerRing: {
     name: "Кольцо башни",
-    image: "https://ibb.co/p4SXRLW",
+    image: "https://ibb.co/H2sv9hD",
     latitude: 43.319133,
     longitude: 45.714269,
     text: `Экран в форме кольца расположен в центре кольцевой развязки "Садовое кольцо" опаясывая стилизованную под вайнахскую башню конструкцию. 
