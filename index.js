@@ -67,6 +67,11 @@ const sendScreenInfo = async (chatId, screen, messageId) => {
       ],
     }),
   });
+  bot.on("callback_query", async (query) => {
+    if (query.data === `contact_manager_${screen.name}`) {
+      await bot.answerCallbackQuery(query.id, { text: "Ваша заявка принята!" });
+    }
+  });
 };
 
 const start = () => {
