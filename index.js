@@ -22,6 +22,7 @@ const {
   berkatPilon,
   lorsanovaCRD,
   ggntu,
+  minutkaAutostation,
 } = require("./screensInfo");
 const { screenOptions } = require("./options");
 
@@ -218,6 +219,9 @@ const start = () => {
     }
     if (data == 22) {
       sendScreenInfo(chatId, ggntu, messageId);
+    }
+    if (data == 23) {
+      sendScreenInfo(chatId, minutkaAutostation, messageId);
     }
     if (data == 0) {
       bot.sendMessage(chatId, "Список экранов", screenOptions);

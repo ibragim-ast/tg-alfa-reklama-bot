@@ -128,6 +128,12 @@ module.exports = {
             callback_data: 22,
           },
         ],
+        [
+          {
+            text: "пр-т. К-Х. Кишиева, Автостанция Минутка",
+            callback_data: 23,
+          },
+        ],
       ],
     }),
   },
