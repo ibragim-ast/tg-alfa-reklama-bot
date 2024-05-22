@@ -23,6 +23,7 @@ const {
   lorsanovaCRD,
   ggntu,
   minutkaAutostation,
+  olimpiysk,
 } = require("./screensInfo");
 const { screenOptions } = require("./options");
 
@@ -89,7 +90,7 @@ const start = () => {
     const chatId = msg.chat.id;
 
     if (text === "/start") {
-      await bot.sendPhoto(chatId, "https://ibb.co/t3qQJyH");
+      await bot.sendPhoto(chatId, "https://ibb.co/TwM01Fr");
       await bot.sendMessage(adminId, "кто-то этим пользуется");
       return bot.sendMessage(
         chatId,
@@ -227,6 +228,9 @@ const start = () => {
     }
     if (data == 23) {
       sendScreenInfo(chatId, minutkaAutostation, messageId);
+    }
+    if (data == 24) {
+      sendScreenInfo(chatId, olimpiysk, messageId);
     }
     if (data == 0) {
       bot.sendMessage(chatId, "Список экранов", screenOptions);

@@ -134,6 +134,12 @@ module.exports = {
             callback_data: 23,
           },
         ],
+        [
+          {
+            text: "Олимпийский проезд",
+            callback_data: 24,
+          },
+        ],
       ],
     }),
   },
