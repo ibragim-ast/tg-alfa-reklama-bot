@@ -432,7 +432,7 @@ module.exports = {
   },
   olimpiysk: {
     name: "Олимпийский",
-    image: "https://ibb.co/2S93ZRH",
+    image: "https://ibb.co/C1bVn9d",
     latitude: 43.332449,
     longitude: 45.712049,
     text: `2 экрана установлены на пересечении Жуковской улицы и ул. Р.И. Гайдабаева (ост. Олимпийский проезд). 
